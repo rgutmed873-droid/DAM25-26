@@ -1,0 +1,23 @@
+@startuml
+title Autenticacion Usuario plataforma Streaming
+
+actor Cliente
+
+participant AppStreaming
+participant GestorUsuarios
+participant BaseDatos
+
+Cliente -> AppStreaming: iniciarSesion
+Cliente -> AppStreaming: introducirCredenciales(user,pass)
+
+AppStreaming -> GestorUsuarios: enviarCredenciales()
+
+GestorUsuarios -> BaseDatos: verificarCredenciales(user, pass)
+BaseDatos -> BaseDatos: comprobarDatos(user, pass)
+
+alt comprobarDatos(user, pass)
+
+GestorUsuarios -> GestorUsuarios: crearSesion()
+AppStreaming --> Cliente: mostrarInicio()
+end
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+title Sistema de Alquiler de Bicicletas Urbanas
+
+actor Usuario
+
+participant AppBici
+participant ServidorCentral
+participant GestorUsuarios
+participant CandadoElectrónico
+
+Usuario -> AppBici : escanearQR()
+
+AppBici -> ServidorCentral : solicitarAlquiler()
+
+ServidorCentral -> ServidorCentral : procesarAlquiler()
+
+ServidorCentral -> GestorUsuarios : comprobarSaldo(idUsuario)
+
+GestorUsuarios --> ServidorCentral : saldoCorrecto
+
+alt Saldo suficiente
+
+    ServidorCentral -> CandadoElectrónico : desbloquear()
+
+end
+
+@enduml

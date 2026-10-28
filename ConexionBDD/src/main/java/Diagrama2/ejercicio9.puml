@@ -1,0 +1,21 @@
+@startuml
+title Control de Climatización Inteligente
+
+participant Termostato
+participant Regulador
+participant Caldera
+participant Válvula
+
+Termostato -> Termostato : detectarTemperatura()
+
+Termostato -> Regulador : procesarBajaTemperatura()
+
+Regulador -> Caldera : encender()
+
+Caldera --> Regulador : calderaEncendida
+
+Regulador -> Regulador : activarFlujo()
+
+Regulador -> Válvula : abrirPaso()
+
+@enduml

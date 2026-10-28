@@ -1,0 +1,13 @@
+@startuml BusDAO
+class BusDAO {
+    + boolean insertBus(Bus, Connection)
+    + ArrayList<Bus> consultBus(Connection)
+    + Bus findBusByRegistro(String, Connection)
+    + boolean updateBus(String, String, String, Connection)
+    + boolean deleteBus(String, Connection)
+}
+' Dependencias
+BusDAO ..> Bus : usa
+BusDAO ..> Connection : usa
+note bottom: Dependencias (no composición/agregación)
+@enduml

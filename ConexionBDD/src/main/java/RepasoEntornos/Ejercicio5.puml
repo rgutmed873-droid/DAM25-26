@@ -1,0 +1,19 @@
+@startuml
+title Che-in Automático de Vuelo
+
+actor Pasajero
+
+participant KioscoAeropuerto
+participant SistemaVuelos
+participant Impresora
+
+Pasajero -> KioscoAeropuerto: introducirCodigo()
+KioscoAeropuerto -> SistemaVuelos: obtenerDatos(codigo)
+SistemaVuelos --> KioscoAeropuerto: datosPasajero
+KioscoAeropuerto -> KioscoAeropuerto: elegirAsiento()
+Pasajero -> KioscoAeropuerto: elegirAsiento()
+KioscoAeropuerto -> KioscoAeropuerto: imprimir()
+KioscoAeropuerto -> Impresora: generarTicket()
+
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml
+title Devolución de producto Ecommerce
+
+actor Comprador
+participant WebTienda
+participant GestorDevoluciones
+participant Factura
+participant ServicioPasarela
+
+Comprador -> WebTienda: solicitarDevolucion(idProducto)
+
+WebTienda -> WebTienda: tramitarDevolucion()
+WebTienda -> GestorDevoluciones: validarPlazo()
+
+GestorDevoluciones -> Factura ++: obtenerFecha()
+
+alt validarPlazo
+GestorDevoluciones -> Factura: actualizarEstado("Devuelto")
+ServicioPasarela -> Comprador: reembolsarDinero(importe)
+end
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+title Check-in Automático de Vuelo
+
+actor Pasajero
+
+participant KioscoAeropuerto
+participant SistemaVuelos
+participant Impresora
+
+Pasajero -> KioscoAeropuerto : introducirCodigo()
+
+KioscoAeropuerto -> SistemaVuelos : obtenerDatos(codigo)
+
+SistemaVuelos --> KioscoAeropuerto : datosPasajero
+
+Pasajero -> KioscoAeropuerto : elegirAsiento()
+
+KioscoAeropuerto -> KioscoAeropuerto : imprimir()
+
+KioscoAeropuerto -> Impresora : generarTicket()
+
+@enduml

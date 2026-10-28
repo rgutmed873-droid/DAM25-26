@@ -1,0 +1,22 @@
+@startuml
+title Compra billete autobus
+
+actor Viajero
+
+participant MaquinaAutobus
+participant SistemaRutas
+participant Impresora
+
+Viajero -> MaquinaAutobus: compraBillete
+Viajero -> MaquinaAutobus: seleccionarDestino()
+
+MaquinaAutobus -> SistemaRutas: verificarPlazas(destino)
+
+alt verificarPlazas
+
+MaquinaAutobus --> Viajero: solicitarPago(importe)
+Viajero -> MaquinaAutobus: introducirPago()
+MaquinaAutobus -> Impresora: emitirOrdenImpresion()
+Impresora --> Viajero: imprimirBillete()
+end
+@enduml

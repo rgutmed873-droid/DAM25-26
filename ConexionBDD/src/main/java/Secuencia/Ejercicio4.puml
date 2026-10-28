@@ -1,0 +1,17 @@
+@startuml
+title Control de temperatura Invernadero automatizado
+
+participant Termometro
+participant ControladorCentral
+participant Extractor
+participant Aspersor
+participant AppAdministrador
+
+Termometro -> ControladorCentral: detectarSobretemperatura()
+ControladorCentral -> ControladorCentral: evaluarAlerta()
+ControladorCentral -> Extractor: encender()
+
+ControladorCentral -> Aspersor ++: activarRiesgo()
+ControladorCentral -> AppAdministrador: notificarEstado()
+AppAdministrador --> Termometro: actualicarPanel()
+@enduml

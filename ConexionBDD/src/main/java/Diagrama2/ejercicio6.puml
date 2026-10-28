@@ -1,0 +1,24 @@
+@startuml
+title Envío de Paquetes (Casillero Inteligente)
+
+actor Repartidor
+
+participant Consola
+participant ServidorPostal
+participant Taquilla
+
+Repartidor -> Consola : introducirPaquete()
+
+Consola -> ServidorPostal : validarCodigo(trackingId)
+
+alt Código válido
+
+    ServidorPostal --> Consola : taquillaLibre
+
+    Consola -> Consola : abrirTaquilla()
+
+    Consola -> Taquilla : abrirPuerta()
+
+end
+
+@enduml

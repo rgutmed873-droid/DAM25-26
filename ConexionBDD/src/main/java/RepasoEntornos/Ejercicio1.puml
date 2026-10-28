@@ -1,0 +1,23 @@
+@startuml
+title Compra en Máquina Expendedora
+
+actor Cliente
+
+participant Pantalla
+participant Controlador
+participant Almacen
+participant LectorTarjetas
+participant Dispensador
+
+Cliente -> Pantalla: seleccionarProducto()
+Pantalla -> Controlador: comprobarStock()
+Controlador -> Almacen: verificarDisponibilidad()
+Almacen --> Controlador: disponible
+
+alt Hay stock
+
+    Controlador -> LectorTarjetas: cobrar(importe)
+    LectorTarjetas-> Controlador: confirmadoPago
+    Controlador -> Dispensador: soltarProducto()
+end
+@enduml

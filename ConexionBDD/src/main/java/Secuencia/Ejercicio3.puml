@@ -1,0 +1,21 @@
+@startuml
+title Pedido en restaurante comida rapida
+
+actor Comensal
+participant TotemDigital
+participant GestorPedidos
+participant Pedido
+participant PantallaCocina
+
+Comensal -> TotemDigital: realizaPedido
+Comensal -> TotemDigital: seleccionarProducto()
+Comensal -> TotemDigital: confirmarCarrito()
+
+TotemDigital -> GestorPedidos: enviarConfirmacion()
+GestorPedidos -> GestorPedidos: procesarSolicitud()
+GestorPedidos -> Pedido ++: newPedido(productos)
+GestorPedidos -> PantallaCocina: mostrarComanda(idPedido)
+
+
+
+@enduml

@@ -1,0 +1,24 @@
+@startuml
+title Pedido de Comida a Domicilio
+
+actor Usuario
+
+participant AppTelepizza
+participant SistemaRestaurante
+participant GestorReparto
+
+Usuario -> AppTelepizza : confirmarPedido()
+
+AppTelepizza -> SistemaRestaurante : recibirPedido()
+
+SistemaRestaurante -> SistemaRestaurante : asignarCocinero()
+
+SistemaRestaurante -> SistemaRestaurante : notificarListo()
+
+SistemaRestaurante -> GestorReparto : buscarRepartidor()
+
+GestorReparto --> SistemaRestaurante : repartidorDisponible
+
+SistemaRestaurante -> GestorReparto : asignarEnvio()
+
+@enduml

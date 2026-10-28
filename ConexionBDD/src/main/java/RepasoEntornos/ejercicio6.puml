@@ -1,0 +1,19 @@
+@startuml
+title Envío de Paquetes
+
+actor Repartidor
+
+participant Consola
+participant ServidorPostal
+participant Taquilla
+
+Repartidor -> Consola: introducirPaquete()
+
+Consola -> ServidorPostal: validarCodigio(trackingId)
+
+alt Código correcto
+    ServidorPostal --> Consola: taquillalibre
+    Consola -> Consola: abrirTaquilla()
+    Consola -> Taquilla: abrirPuerta()
+end
+@enduml

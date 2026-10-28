@@ -1,0 +1,19 @@
+@startuml
+title Acceso a un Gimnasio
+
+actor Socio
+
+participant Lector
+participant ServidorCentral
+participant Torno
+
+Socio -> Lector: leerPulsera()
+Lector -> ServidorCentral: validarAcceso(idSocio)
+ServidorCentral --> Lector: accesoPermitido
+
+alt Cuota activa
+    ServidorCentral -> Torno: abrir()
+    Torno -> Torno: actualizarEstado(Permitido))
+
+end
+@enduml

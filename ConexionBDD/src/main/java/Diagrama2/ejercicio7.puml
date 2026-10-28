@@ -1,0 +1,27 @@
+@startuml
+title Sistema de Peaje Dinámico (Telepeaje)
+
+actor Vehículo
+
+participant Antena
+participant CentralPeaje
+participant CuentaBancaria
+participant Semáforo
+
+Vehículo -> Antena : detectarDispositivo()
+
+Antena -> CentralPeaje : procesarPaso()
+
+CentralPeaje -> CuentaBancaria : debitarImporte(monto)
+
+CuentaBancaria --> CentralPeaje : pagoCorrecto
+
+alt Pago procesado correctamente
+
+    CentralPeaje -> CentralPeaje : actualizarSemaforo()
+
+    CentralPeaje -> Semáforo : cambiarVerde()
+
+end
+
+@enduml

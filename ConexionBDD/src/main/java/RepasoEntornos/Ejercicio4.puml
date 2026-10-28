@@ -1,0 +1,18 @@
+@startuml
+title Carga de Vehículo Electrico
+
+actor Conductor
+
+participant PosteCarga
+participant AppUsuario
+participant Corriente
+
+Conductor -> PosteCarga: detectarConexion()
+PosteCarga -> AppUsuario: solicitarAutorizacion()
+Conductor -> AppUsuario: confirmarCarga()
+AppUsuario -> PosteCarga: iniciarFlujo()
+PosteCarga -> Corriente: activar()
+
+
+
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+title Proceso de Pago con Tarjeta en Tienda (TPV)
+
+actor Dependiente
+actor Cliente
+
+participant TPV
+participant PasarelaPago
+participant BancoEmisor
+participant Impresora
+
+Dependiente -> TPV : introducirImporte()
+
+Cliente -> TPV : leerTarjeta()
+
+TPV -> PasarelaPago : solicitarAutorizacion(datosTarjeta,monto)
+
+PasarelaPago -> BancoEmisor : verificarFondos()
+
+BancoEmisor --> PasarelaPago : fondosValidos
+
+alt Operación aprobada
+
+    PasarelaPago --> TPV : pagoAprobado
+
+    TPV -> TPV : finalizarVenta()
+
+    TPV -> Impresora : imprimirTicket()
+
+end
+
+@enduml
